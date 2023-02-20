@@ -1,0 +1,31 @@
+<%- layout('layouts/main.ejs') %>
+    <a href="/api-funcionario/create-product" class="btn btn-primary btn-block mt-3 form-control">Crear Producto</a>
+    <a href="/api-funcionario/dashboard" class="btn btn-success btn-block mt-3 form-control">Volver</a>
+    <div class="row col-md-12">
+        <% for(var i=0; i < AllProducts.length; i++) { %>
+            <div class="card text-center col-md-3 mt-3">
+                <div class="card-header">
+                    <h3>
+                        <%= AllProducts[i].nombreProducto %>
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <h4>Categoria: <%= AllProducts[i].categoriaProducto %>
+                    </h4>
+                    <h4>Descripcion: <%= AllProducts[i].descripcion %>
+                    </h4>
+                    <h4>Precio: <%= AllProducts[i].precio %>
+                    </h4>
+                    <h4>Unidades: <%= AllProducts[i].unidades %>
+                    </h4>
+                    <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                    <a href="/api-funcionario/update-product/<%= AllProducts[i]._id %>"
+                        class="btn btn-primary btn-block mt-3 form-control">Actualizar</a>
+                    <form action="/api-funcionario/delete-product/<%= AllProducts[i]._id %>" method="POST">
+                        <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                        <button type="submit" class="btn btn-danger btn-block mt-3 form-control">Eliminar</button>
+                    </form>
+                </div>
+            </div>
+            <% } %>
+    </div>

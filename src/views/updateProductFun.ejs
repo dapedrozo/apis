@@ -1,0 +1,54 @@
+<%- layout('layouts/main.ejs') %>
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="card mt-5 text-center">
+            <div class="card-header">
+                <h3>Actualizar Producto</h3>
+            </div>
+            <div class="card-body">
+                <form action="/api-funcionario/update-product/<%= ProductUpdate._id %>" method="POST">
+                    <div class="row g-2">
+                        <div class="col-md-6">
+                            <label for="idFuncio" class="form-label">idFuncionario</label>
+                            <input type="text" name="idFuncio" id="idFuncio" class="form-control" value="<%= ProductUpdate.idFuncionario %>">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="nombreProducto" class="form-label">Nombre del Producto</label>
+                            <input type="text" name="nombreProducto" id="nombreProducto" class="form-control" value="<%= ProductUpdate.nombreProducto %>">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="categoriaProducto" class="form-label">Categoria del Producto</label>
+                            <select name="categoriaProducto" id="categoriaProducto" class="form-control"
+                            value="<%= ProductUpdate.categoriaProducto %>">
+                                <option value="camisas">Camisas</option>
+                                <option value="pantalones">Pantalones</option>
+                                <option value="calzado">Calzado</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="descripcion" class="form-label">descripcion</label>
+                            <input type="text" name="descripcion" id="descripcion" class="form-control" value="<%= ProductUpdate.descripcion %>">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="precio" class="form-label">precio por unidad</label>
+                            <input type="text" name="precio" id="precio" class="form-control" value="<%= ProductUpdate.precio %>">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="unidades" class="form-label">unidades disponibles</label>
+                            <input type="number" name="unidades" id="unidades" class="form-control" value="<%= ProductUpdate.unidades %>">
+                        </div>
+                        <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block mt-4 form-control">
+                                Actualizar Producto
+                            </button>
+                            <a href="/api-funcionario/get-products"
+                                class="btn btn-success btn-block mt-3 form-control">Volver</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

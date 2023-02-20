@@ -1,0 +1,32 @@
+<%- layout('layouts/main.ejs') %>
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="card mt-0 text-center">
+            <div class="card-header">
+                <h3>Carrito</h3>
+            </div>
+            <div class="card-body">
+                <form action="/api-ciudadania/preCarrito" method="POST">
+                    <div class="row g-2">
+                        <% for(var i=0; i < AllProducts.length; i++) { %>
+                            <div class="col-md-6">
+                                <input type="text" name="nombreProducto+<%= [i] %>" id="nombreProducto+<%= [i] %>" class="form-control" value="<%= AllProducts[i].nombreProducto %>" placeholder="<%= AllProducts[i].nombreProducto %>" disabled>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="number" name="cantidad+<%= [i] %> " id="cantidadNomnbreProduct+<%= [i] %>" class="form-control">
+                            </div>
+                            <% } %>
+                    </div>
+                    <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block mt-4 form-control">
+                            Guardar
+                        </button>
+                        <a href="/api-ciudadania/get-products-ciudadania" class="btn btn-success btn-block mt-3 form-control">Volver</a>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>

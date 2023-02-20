@@ -1,0 +1,66 @@
+<%- layout('layouts/main.ejs') %>
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="card mt-0 text-center">
+            <div class="card-header">
+                <h3>Registro Funcionarios</h3>
+            </div>
+            <div class="card-body">
+                <form action="/api-funcionario/signUp-funcionarios" method="POST">
+                    <div class="row g-2">
+                        <div class="col-md-6">
+                            <label for="primerNombre" class="form-label">Primer nombre</label>
+                            <input type="text" name="primerNombre" id="primerNombre" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="segundoNombre" class="form-label">Segundo nombre</label>
+                        <input type="text" name="segundoNombre" id="segundoNombre" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="primerApellido" class="form-label">Primer apellido</label>
+                        <input type="text" name="primerApellido" id="primerApellido" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="segundoApellido" class="form-label">Segundo apellido</label>
+                            <input type="text" name="segundoApellido" id="segundoApellido" class="form-control">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="tipoDocumento" class="form-label">Tipo documento</label>
+                            <select name="tipoDocumento" id="tipoDocumento" class="form-control">
+                                <option value="cedula">Cedula</option>
+                                <option value="tarjetaDeIdentidad">Tarjeta de identidad</option>
+                                <option value="pasaporte">Pasaporte</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="numeroDocumento" class="form-label">Numero documento</label>
+                            <input type="text" name="numeroDocumento" id="numeroDocumento" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="correoElectronico" class="form-label">Email</label>
+                            <input type="email" name="correoElectronico" id="correoElectronico" class="form-control">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="telefonoCel" class="form-label">Celular</label>
+                            <input type="text" name="telefonoCel" id="telefonoCel" class="form-control">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <input type="password" name="password" id="password" class="form-control">
+                            <div style="color:red" id="err"></div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                    <div class="form-group">
+                        <button type="submit" onclick="return encrypt()" class="btn btn-primary btn-block mt-4 form-control">
+                            Guardar
+                        </button>
+                        <a href="/api-funcionario/signIn-funcionarios" class="btn btn-success btn-block mt-3 form-control">Iniciar sesion</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

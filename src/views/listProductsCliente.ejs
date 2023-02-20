@@ -1,0 +1,44 @@
+<%- layout('layouts/main.ejs') %>
+<a href="/api-ciudadania/preCarrito" class="btn btn-primary btn-block mt-3 form-control">Ver carrito</a>
+    <div class="row col-md-12">
+        <% for(var i=0; i < AllProducts.length; i++) { %>
+            <div class="card text-center col-md-3 mt-3">
+                <div class="card-header">
+                    <h3>
+                        <%= AllProducts[i].nombreProducto %>
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <h4>Categoria: <%= AllProducts[i].categoriaProducto %>
+                    </h4>
+                    <h4>Descripcion: <%= AllProducts[i].descripcion %>
+                    </h4>
+                    <h4>Precio: <%= AllProducts[i].precio %>
+                    </h4>
+                    <h4>Unidades: <%= AllProducts[i].unidades %>
+                    </h4>
+                    <% if (listaProductos.find(element => element==AllProducts[i]._id) ) { %>
+                            <button type="button" class="btn btn-primary btn-block mt-3 form-control" disabled>
+                                añadir al carrito
+                            </button>
+                            <form action="/api-ciudadania/del-prod-select/<%= AllProducts[i]._id %>" method="POST">
+                                <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                                <button type="submit" class="btn btn-danger btn-block mt-3 form-control">Eliminar del carrito</button>
+                            </form>
+                    <% } else { %>
+                        <form action="/api-ciudadania/get-products-ciudadania" method="POST">
+                            <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                            <input type="hidden" name="idCarrito" value="6195a06feb1a0932bdea6fc4">
+                            <input type="hidden" name="idProducto" id="idProduct" value="<%= AllProducts[i]._id %>">
+                            <input type="hidden" name="nombreProducto" id="nombreProducto" value="<%= AllProducts[i].nombreProducto %>">
+                            <input type="hidden" name="descripcionProducto" id="descripcionProducto" value="<%= AllProducts[i].descripcion %>">
+                            <button type="submit" class="btn btn-primary btn-block mt-3 form-control">
+                                añadir al carrito
+                            </button>
+                        </form>
+                    <% } %>  
+                </div>
+            </div>
+            <% } %>
+            
+    </div>

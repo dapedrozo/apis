@@ -1,0 +1,51 @@
+<%- layout('layouts/main.ejs') %>
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="card mt-5 text-center">
+            <div class="card-header">
+                <h3>Actualizar Drone</h3>
+            </div>
+            <div class="card-body">
+                <form action="/api-funcionario/update-drone/<%= DroneUpdate._id %>" method="POST">
+                    <div class="row g-2">
+                        <div class="col-md-6">
+                            <label for="idFuncio" class="form-label">idFuncionario</label>
+                            <input type="text" name="idFuncio" id="idFuncio" class="form-control" value="<%= DroneUpdate.idFuncionario %>">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="nombreDrone" class="form-label">Nombre del Drone</label>
+                            <input type="text" name="nombreDrone" id="nombreDrone" class="form-control" value="<%= DroneUpdate.nombreDrone %>">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="tipoDrone" class="form-label">Tipo del Drone</label>
+                            <input type="text" name="tipoDrone" id="tipoDrone" class="form-control" value="<%= DroneUpdate.tipoDrone %>">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="estado" class="form-label">Estado del Drone</label>
+                            <select name="estado" id="estado" class="form-control"
+                            value="<%= DroneUpdate.estado %>">
+                                <option value="verde">activo</option>
+                                <option value="amarillo">ocupado</option>
+                                <option value="rojo">en reparacion</option>
+                                <option value="negro">desactivado</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="descripcion" class="form-label">descripcion</label>
+                            <input type="text" name="descripcion" id="descripcion" class="form-control" value="<%= DroneUpdate.descripcion %>">
+                        </div>
+                        <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block mt-4 form-control">
+                                Actualizar Drone
+                            </button>
+                            <a href="/api-funcionario/get-drones"
+                                class="btn btn-success btn-block mt-3 form-control">Volver</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
